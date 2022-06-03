@@ -15,6 +15,24 @@ const TableProduct = () => {
       title: "ddd",
       price: "2222",
     },
+    {
+      id: "3",
+      category: "aaa",
+      title: "bbb",
+      price: "1111",
+    },
+    {
+      id: "4",
+      category: "ccc",
+      title: "ddd",
+      price: "2222",
+    },
+    {
+      id: "5",
+      category: "ccc",
+      title: "ddd",
+      price: "2222",
+    },
   ];
 
   const dataInfo = [
@@ -66,6 +84,7 @@ const TableProduct = () => {
         data={data}
         dataInfo={dataInfo}
         additionField={additionField}
+        numOfPage={3}
       />
     </>
   );
