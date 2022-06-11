@@ -1,8 +1,10 @@
 import React from "react";
+import { createPortal } from "react-dom";
 import ModalsContainer from "../../components/ModalsContainer";
 
 const AddProduct = () => {
   return (
+
     <>
       <button
         className="btn btn-success d-flex justify-content-center align-items-center"
@@ -12,8 +14,8 @@ const AddProduct = () => {
         <i className="fas fa-plus text-light"></i>
       </button>
       <ModalsContainer
-        id="add_product_modal"
         fullScreen={true}
+        id="add_product_modal"
         title="افزودن محصول جدید"
       >
         <div className="container">
@@ -114,7 +116,10 @@ const AddProduct = () => {
                 </span>
               </div>
               <div className="col-12 col-md-6 col-lg-8 mb-3 d-flex">
-                <span className="color_tag chips_elem d-flex justify-content-center align-items-center pb-2">
+                <span
+                  className="color_tag chips_elem d-flex justify-content-center align-items-center pb-2"
+                  style={{ background: "#000" }}
+                >
                   <i className="fas fa-times text-danger hoverable_text"></i>
                 </span>
               </div>
@@ -162,11 +167,7 @@ const AddProduct = () => {
             </div>
             <div className="col-12 col-md-6 col-lg-8">
               <div className="input-group mb-3 dir_ltr">
-                <input
-                  type="file"
-                  className="form-control"
-                  placeholder="تصویر"
-                />
+                <input type="file" className="form-control" placeholder="تصویر" />
                 <span className="input-group-text w_6rem justify-content-center">
                   تصویر
                 </span>

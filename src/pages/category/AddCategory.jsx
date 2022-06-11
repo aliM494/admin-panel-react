@@ -1,7 +1,7 @@
 import React from "react";
 import ModalsContainer from "../../components/ModalsContainer";
 
-const AddCategory = () => {
+const Addcategory = () => {
   return (
     <>
       <button
@@ -11,9 +11,10 @@ const AddCategory = () => {
       >
         <i className="fas fa-plus text-light"></i>
       </button>
+
       <ModalsContainer
-        id="add_product_category_modal"
         fullScreen={true}
+        id="add_product_category_modal"
         title="افزودن دسته محصولات"
       >
         <div className="container">
@@ -91,4 +92,4 @@ const AddCategory = () => {
   );
 };
 
-export default AddCategory;
+export default Addcategory;
