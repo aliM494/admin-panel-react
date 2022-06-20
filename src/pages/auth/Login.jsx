@@ -3,6 +3,7 @@ import { Form, Formik } from "formik";
 import React from "react";
 import * as Yup from "yup";
 import AuthFormikcontrol from "../../components/authForm/AuthFormikcontrol";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   phone: "",
@@ -10,13 +11,18 @@ const initialValues = {
   remember: false,
 };
 
-const onSubmit = (values) => {
-  axios.post("https://ecomadminapi.azhadev.ir/api/auth/login", {
-    ...values,
-    remember: values.remember ? 1 : 0,
-  }).then(res=>{
-    console.log(res);
-  });
+const onSubmit = (values,navigate) => {
+  axios
+    .post("https://ecomadminapi.azhadev.ir/api/auth/login", {
+      ...values,
+      remember: values.remember ? 1 : 0,
+    })
+    .then((res) => {
+      if (res.status == 200) {
+        localStorage.setItem("loginToken", JSON.stringify(res.data));
+        navigate("/")
+      }
+    });
 };
 
 const validationSchema = Yup.object({
@@ -28,10 +34,13 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
+
+  const navigate =useNavigate ()
+
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={onSubmit}
+      onSubmit={(values)=>onSubmit(values,navigate)}
       validationSchema={validationSchema}
     >
       {(formik) => {
@@ -58,7 +67,6 @@ const Login = () => {
                 icon="fa fa-lock"
                 label="رمز عبور"
               />
-
 
               <AuthFormikcontrol
                 formik={formik}
